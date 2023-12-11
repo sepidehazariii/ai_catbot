@@ -4,4 +4,5 @@ function changePage(){
     document.getElementById('page3').hidden=true;
     document.getElementById('page4').hidden=true;
     document.getElementById('page5').hidden=true;
+    console.log("mehrdad is cool ");
 }
