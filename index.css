@@ -10,7 +10,7 @@ body {
 }
 #page2{
     height: 100vh;
-    display: none;
+    
 }
 #page3{
     height: 100vh;
@@ -40,7 +40,7 @@ color: #F24646;
     text-align: center;
     
 }
-.img{
+.avator{
     width: 100px;
     height: 100px;
     flex-shrink: 0;
