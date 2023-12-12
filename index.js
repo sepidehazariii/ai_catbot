@@ -8,16 +8,6 @@ document.getElementById('page43').hidden=true;
 document.getElementById('page44').hidden=true;
 document.getElementById('page5').hidden=true;
 
-function changAvator(){
-    document.getElementById('page1').hidden=true;
-    document.getElementById('page2').hidden=true;
-    document.getElementById('page3').hidden=true;
-    document.getElementById('page4').hidden=true;
-    document.getElementById('page42').hidden=true;
-document.getElementById('page43').hidden=true;
-document.getElementById('page44').hidden=true;
-    document.getElementById('page5').hidden=true;
-}
 function changePage1(){
     document.getElementById('page1').hidden=true;
     document.getElementById('page2').hidden=true;
@@ -48,8 +38,7 @@ function changePage3(){
     document.getElementById('page44').hidden=true;
     document.getElementById('page5').hidden=!true;
 }
-
-    function changePage41(){
+function changePage41(){
         document.getElementById('page1').hidden=true;
         document.getElementById('page2').hidden=true;
         document.getElementById('page3').hidden=true;
@@ -121,16 +110,6 @@ const socket = io("https://boomserver.pick-up.services/", {
     socket.on("connect", () => {
         console.log('this is your ID: ', socket.id);
     });
-    socket.on("promptresult", (data)=>{
-        console.log("this is promt from server", data);
-        changePage2();
-    document.getElementById("1st-Person").textContent=data['1st-Person']['Story Lines']
-    document.getElementById("Journalistic").textContent=data['Journalistic']['Story Lines']
-    document.getElementById("Magical").textContent=data['Magical']['Story Lines']
-    document.getElementById("Minimal").textContent=data['Minimal']['Story Lines']
-    document.getElementById("Sci-Fi").textContent=data['Sci-Fi']['Story Lines']
-    });
-    
     function prompt(){
      
         let input= document.getElementById("input_main").value;
@@ -147,6 +126,28 @@ const socket = io("https://boomserver.pick-up.services/", {
         document.getElementById('page5').hidden=true;
         
     }
+    socket.on("promptresult", (data)=>{
+        console.log("this is promt from server", data);
+        changePage2();
+    document.getElementById("1st-Person").textContent=data['1st-Person']['Story Lines']
+    document.getElementById("Journalistic").textContent=data['Journalistic']['Story Lines']
+    document.getElementById("Magical").textContent=data['Magical']['Story Lines']
+    document.getElementById("Minimal").textContent=data['Minimal']['Story Lines']
+    document.getElementById("Sci-Fi").textContent=data['Sci-Fi']['Story Lines']
+    });
+    function cat(category){
+        socket.emit("cat", category)
+         document.getElementById('page1').hidden=true;
+         document.getElementById('page2').hidden=!true;
+         document.getElementById('page3').hidden=true;
+         document.getElementById('page4').hidden=true;
+         document.getElementById('page42').hidden=true;
+         document.getElementById('page43').hidden=true;
+         document.getElementById('page44').hidden=true;
+         document.getElementById('page5').hidden=true;
+         
+     }
+    
     socket.on("school", (data)=>{
         console.log("this is promt from server", data);
         
@@ -163,19 +164,19 @@ const socket = io("https://boomserver.pick-up.services/", {
     document.getElementById('page44').hidden=true;
     document.getElementById('page5').hidden=true;
     });
-
-    function cat(category){
-       socket.emit("cat", category)
-        document.getElementById('page1').hidden=true;
-        document.getElementById('page2').hidden=!true;
-        document.getElementById('page3').hidden=true;
-        document.getElementById('page4').hidden=true;
-        document.getElementById('page42').hidden=true;
-        document.getElementById('page43').hidden=true;
-        document.getElementById('page44').hidden=true;
-        document.getElementById('page5').hidden=true;
-        
-    }
+    function teachers(teacher){
+        socket.emit("teacher", teacher)
+         document.getElementById('page1').hidden=true;
+         document.getElementById('page2').hidden=!true;
+         document.getElementById('page3').hidden=true;
+         document.getElementById('page4').hidden=true;
+         document.getElementById('page42').hidden=true;
+         document.getElementById('page43').hidden=true;
+         document.getElementById('page44').hidden=true;
+         document.getElementById('page5').hidden=!true;
+         
+     }
+  
     socket.on("results", (data)=>{
         console.log("this is promt from server", data);
         
@@ -191,15 +192,4 @@ const socket = io("https://boomserver.pick-up.services/", {
     document.getElementById('page5').hidden=!true;
     });
 
-    function teachers(teacher){
-       socket.emit("teacher", teacher)
-        document.getElementById('page1').hidden=true;
-        document.getElementById('page2').hidden=!true;
-        document.getElementById('page3').hidden=true;
-        document.getElementById('page4').hidden=true;
-        document.getElementById('page42').hidden=true;
-        document.getElementById('page43').hidden=true;
-        document.getElementById('page44').hidden=true;
-        document.getElementById('page5').hidden=!true;
-        
-    }
+   
